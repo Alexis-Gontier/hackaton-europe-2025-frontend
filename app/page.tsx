@@ -1,19 +1,20 @@
 "use client"
 
+import localforage from 'localforage';
 import { useState } from 'react';
 
 export default function Home() {
   const [message, setMessage] = useState('');
 
-  const addToken = () => {
-    localStorage.setItem('access_token', 'Hello, this is a message!');
-    setMessage('ajouté');
-  };
+  async function addToken() {
+    await localforage.setItem('access_token', 'Hello, this is a message!')
+    setMessage('ajouté')
+  }
 
-  const removeToken = () => {
-    localStorage.removeItem('access_token');
-    setMessage('enlevé');
-  };
+  async function removeToken() {
+    await localforage.removeItem('access_token')
+    setMessage('enlevé')
+  }
 
   return (
     <div>

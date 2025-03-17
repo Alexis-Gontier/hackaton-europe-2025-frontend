@@ -1,27 +1,30 @@
-"use client"
+'use client';
 
 import { useEffect, useState } from 'react';
 import useAuth from '@/hooks/useAuth';
+import localforage from 'localforage';
 
-export default function page() {
-
-  const [token, setToken] = useState<string | null>('');
+export default function Page() {
+  const [token, setToken] = useState<string | null>(null);
   const { logout } = useAuth();
 
   useEffect(() => {
-    const t = localStorage.getItem('access_token');
-    setToken(t);
-  }, [token]);
+    async function fetchToken() {
+      const t = await localforage.getItem<string>('access_token')
+      setToken(t)
+    }
 
-  const handleLogout = () => {
-    logout();
+    fetchToken()
+  }, [])
+
+  function handleLogout() {
+    logout()
   }
-
 
   return (
     <div>
       <p>Token: {token}</p>
       <button onClick={handleLogout}>Logout</button>
     </div>
-  )
+  );
 }

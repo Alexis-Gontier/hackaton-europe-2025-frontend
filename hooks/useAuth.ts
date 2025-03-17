@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import localforage from 'localforage';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -67,7 +68,7 @@ export default function useAuth() {
         throw new Error(data.detail || "Échec de la connexion");
       }
 
-      localStorage.setItem("access_token", data.access_token);
+      await localforage.setItem('access_token', data.access_token);
       router.push("/test");
     } catch (err: any) {
       setError(err.message);
@@ -78,7 +79,7 @@ export default function useAuth() {
   }
 
   async function logout() {
-    localStorage.removeItem("access_token");
+    await localforage.removeItem("access_token");
     router.push("/login");
   }
 
