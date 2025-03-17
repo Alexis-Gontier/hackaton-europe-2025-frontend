@@ -81,7 +81,7 @@ export default function RegisterPage() {
             checked={registerData.consent}
             onChange={handleRegisterChange}
           />
-          J'accepte les conditions d'utilisation
+          J&apos;accepte les conditions d&apos;utilisation
         </label>
         <button type="submit" disabled={loading}>
           {loading ? "Chargement..." : "S&apos;inscrire"}
