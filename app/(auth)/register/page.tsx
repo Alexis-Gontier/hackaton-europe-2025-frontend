@@ -37,7 +37,7 @@ export default function RegisterPage() {
         <input
           type="text"
           name="username"
-          placeholder="Nom d'utilisateur"
+          placeholder="Nom d&apos;utilisateur"
           value={registerData.username}
           onChange={handleRegisterChange}
           required
@@ -84,7 +84,7 @@ export default function RegisterPage() {
           J'accepte les conditions d'utilisation
         </label>
         <button type="submit" disabled={loading}>
-          {loading ? "Chargement..." : "S'inscrire"}
+          {loading ? "Chargement..." : "S&apos;inscrire"}
         </button>
       </form>
       <p>
