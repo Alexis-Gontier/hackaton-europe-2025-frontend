@@ -1,4 +1,3 @@
-import HorizontalCarousel from "@/components/scroll/HorizontalCarousel"
 import VerticalCarousel from "@/components/scroll/VerticalCarousel"
 
 export default function page() {

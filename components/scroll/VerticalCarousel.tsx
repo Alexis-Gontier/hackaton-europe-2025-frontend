@@ -4,7 +4,6 @@ import {
     CarouselItem,
 } from "@/components/ui/carousel"
 import HorizontalCarousel from "./HorizontalCarousel"
-import CardInfo from "./CardInfo"
 
 export default function VerticalCarousel() {
   return (
