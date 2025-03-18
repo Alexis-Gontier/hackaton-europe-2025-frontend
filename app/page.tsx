@@ -2,6 +2,7 @@
 
 import localforage from 'localforage';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   const [message, setMessage] = useState('');
@@ -23,6 +24,9 @@ export default function Home() {
       <button onClick={addToken}>Add Token</button>
       <button onClick={removeToken}>remove Token</button>
       <p>{message}</p>
+
+
+      <p>Link Page: <Link href="/carousel">Carousel</Link></p>
     </div>
   );
 }
