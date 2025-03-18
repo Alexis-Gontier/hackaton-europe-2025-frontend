@@ -26,7 +26,7 @@ export default function Home() {
       <p>{message}</p>
 
 
-      <p>Link Page: <Link href="/carousel">Carousel</Link></p>
+      <p>Link Page:<Link href="/carousel">Carousel</Link></p>
     </div>
   );
 }
