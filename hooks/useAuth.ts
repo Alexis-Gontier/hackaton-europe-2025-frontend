@@ -1,15 +1,97 @@
+/**
+ * @module hooks/useAuth
+ * @description Hook personnalisé pour gérer l'authentification des utilisateurs.
+ *
+ * Ce hook fournit toutes les fonctionnalités nécessaires pour l'authentification :
+ * - Inscription d'un nouvel utilisateur
+ * - Connexion d'un utilisateur existant
+ * - Déconnexion
+ *
+ * @example
+ * // Importation du hook
+ * import useAuth from '@/hooks/useAuth';
+ *
+ * // Utilisation dans un composant
+ * function LoginPage() {
+ *   const { login, loading, error } = useAuth();
+ *
+ *   const handleSubmit = async (e) => {
+ *     e.preventDefault();
+ *     try {
+ *       await login(username, password);
+ *       // Redirection automatique vers /test en cas de succès
+ *     } catch (err) {
+ *       // L'erreur est déjà gérée dans le hook
+ *     }
+ *   };
+ *
+ *   return (
+ *     <form onSubmit={handleSubmit}>
+ *       {error && <p className="error">{error}</p>}
+ *       <button type="submit" disabled={loading}>
+ *         {loading ? 'Chargement...' : 'Se connecter'}
+ *       </button>
+ *     </form>
+ *   );
+ * }
+ *
+ * @returns {Object} Fonctions et états liés à l'authentification.
+ * @property {boolean} loading - Indique si une opération d'authentification est en cours.
+ * @property {string|null} error - Message d'erreur si l'opération a échoué, null sinon.
+ * @property {Function} register - Fonction pour inscrire un nouvel utilisateur.
+ * @property {Function} login - Fonction pour connecter un utilisateur.
+ * @property {Function} logout - Fonction pour déconnecter l'utilisateur actuel.
+ */
+
+/**
+ * @typedef {Object} RegisterData
+ * @property {string} username - Nom d'utilisateur.
+ * @property {string} firstname - Prénom.
+ * @property {string} name - Nom de famille.
+ * @property {string} email - Adresse email.
+ * @property {string} password - Mot de passe.
+ * @property {boolean} consent - Consentement aux conditions d'utilisation.
+ * @property {string} role - Rôle de l'utilisateur.
+ */
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import localforage from 'localforage';
-import { toast } from "sonner"
+import localforage from "localforage";
+import { toast } from "sonner";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+/**
+ * Hook personnalisé pour gérer l'authentification des utilisateurs.
+ *
+ * @returns {Object} Fonctions et états liés à l'authentification.
+ */
 export default function useAuth() {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
+  /**
+   * Fonction d'inscription d'un nouvel utilisateur.
+   *
+   * @async
+   * @param {RegisterData} data - Données d'inscription de l'utilisateur.
+   * @throws {Error} Si l'inscription échoue.
+   * @returns {Promise<void>} Promise qui se résout lorsque l'inscription est réussie.
+   *
+   * @example
+   * const { register } = useAuth();
+   *
+   * await register({
+   *   username: 'johndoe',
+   *   firstname: 'John',
+   *   name: 'Doe',
+   *   email: 'john@example.com',
+   *   password: 'password123',
+   *   consent: true,
+   *   role: 'user'
+   * });
+   */
   async function register(data: {
     username: string;
     firstname: string;
@@ -44,6 +126,24 @@ export default function useAuth() {
     }
   }
 
+  /**
+   * Fonction de connexion d'un utilisateur.
+   *
+   * @async
+   * @param {string} username - Nom d'utilisateur.
+   * @param {string} password - Mot de passe.
+   * @throws {Error} Si la connexion échoue.
+   * @returns {Promise<void>} Promise qui se résout lorsque la connexion est réussie.
+   *
+   * @example
+   * const { login } = useAuth();
+   *
+   * try {
+   *   await login('johndoe', 'password123');
+   * } catch (err) {
+   *   console.error('Erreur de connexion:', err.message);
+   * }
+   */
   async function login(username: string, password: string) {
     setLoading(true);
     setError(null);
@@ -70,7 +170,7 @@ export default function useAuth() {
         throw new Error(data.detail || "Échec de la connexion");
       }
 
-      await localforage.setItem('access_token', data.access_token);
+      await localforage.setItem("access_token", data.access_token);
       router.push("/test");
       toast("Connexion réussie");
     } catch (err: any) {
@@ -81,39 +181,23 @@ export default function useAuth() {
     }
   }
 
+  /**
+   * Fonction de déconnexion de l'utilisateur actuel.
+   *
+   * @async
+   * @returns {Promise<void>} Promise qui se résout lorsque la déconnexion est réussie.
+   *
+   * @example
+   * const { logout } = useAuth();
+   *
+   * const handleLogout = () => {
+   *   logout();
+   * };
+   */
   async function logout() {
     await localforage.removeItem("access_token");
     toast("Déconnexion réussie");
     router.push("/login");
-  }
-
-  async function fetchUser(id: string) {
-    setLoading(true);
-    setError(null);
-    try {
-      const token = await localforage.getItem("access_token");
-      if (!token) {
-        throw new Error("Utilisateur non authentifié");
-      }
-      const response = await fetch(`${API_URL}/user/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-      });
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || "Erreur lors de la récupération des données utilisateur");
-      }
-      const userData = await response.json();
-      return userData;
-    } catch (err: any) {
-      setError(err.message);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
   }
 
   return {
@@ -122,6 +206,5 @@ export default function useAuth() {
     register,
     login,
     logout,
-    fetchUser,
   };
 }
