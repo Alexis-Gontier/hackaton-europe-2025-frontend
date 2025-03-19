@@ -52,6 +52,9 @@ export default function LoginPage() {
       <p>
         Pas de compte ? <Link href="/register">Inscrivez-vous</Link>
       </p>
+      <Link href={"/privacy"}>
+        Privacy Policy
+      </Link>
     </div>
   );
 }
