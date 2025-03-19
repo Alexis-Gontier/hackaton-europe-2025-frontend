@@ -36,10 +36,10 @@ export default function AccordionAccount() {
 
   const [gender, setGender] = React.useState("male");
 
-  const {  logout } = useAuth();
+  const { logout } = useAuth();
 
   return (
-    <Card className="w-screen h-screen">
+    <Card>
       <CardHeader>
         <CardTitle>Your account</CardTitle>
         <CardDescription>Your informations all at the same place</CardDescription>
