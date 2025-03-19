@@ -26,9 +26,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import useAuth from "@/hooks/useAuth";
+import { Button } from "@/components/ui/button";
+import React from "react";
+
 
 export default function AccordionAccount() {
-export default function CardWithForm() {
+
   const [gender, setGender] = React.useState("male");
 
   const {  logout } = useAuth();
