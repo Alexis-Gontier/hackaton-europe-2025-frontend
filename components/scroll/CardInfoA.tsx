@@ -50,8 +50,8 @@ export default function CardInfoA() {
                   <SelectItem value="2">Harms the economy and opportunities</SelectItem>
                   <SelectItem value="3">Damages the environment</SelectItem>
                   <SelectItem value='4'>Ignores public interest</SelectItem>
-                  <SelectItem value='5'>I don't trust  the decision-makers</SelectItem>
-                  <SelectItem value='6'>Other (please specify)</SelectItem>                
+                  <SelectItem value='5'>I don t trust  the decision-makers</SelectItem>
+                  <SelectItem value='6'>Other (please specify)</SelectItem>
                 </SelectContent>
               </Select>
               </div>
