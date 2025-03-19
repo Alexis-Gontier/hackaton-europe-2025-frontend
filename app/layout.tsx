@@ -1,6 +1,6 @@
-import "@/app/globals.css";
 "use client"
 
+import "@/app/globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import { AvatarDemo } from "@/components/avatar/avatar";
 import { Toaster } from "@/components/ui/sonner"
@@ -13,19 +13,19 @@ export default function RootLayout({
 }>) {
 
   const pathname = usePathname();
-  const pageName = pathname === "/" ? "Home" : pathname.substring(1).charAt(0).toUpperCase()+ pathname.slice(2);
+  const pageName = pathname === "/" ? "Home" : pathname.substring(1).charAt(0)+ pathname.slice(2);
   return (
     <html lang="en">
       <body className="">
         <main className="max-w-[390px] mx-auto px-10 w-screen">
           <div className="flex my-8 place-content-between">
-            <h1>{pageName}</h1>
+            <h1 className="text-3xl font-bold uppercase">{pageName}</h1>
             <AvatarDemo />
           </div>
           {children}
+        </main>
         <Navbar />
         <Toaster />
-        </main>
       </body>
     </html>
   );
