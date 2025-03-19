@@ -54,6 +54,8 @@
  * @property {string} role - Rôle de l'utilisateur.
  */
 
+"use client"
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import localforage from "localforage";

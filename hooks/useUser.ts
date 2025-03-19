@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react";
 import localforage from "localforage";
 import { toast } from "sonner";
