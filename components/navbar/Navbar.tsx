@@ -10,11 +10,7 @@ export default function Navbar() {
 
   const pathname = usePathname();
 
-  // mettre l'app sur "/" en base url
-  // merge le profil
-  // faire une search page
   // auth ajouter user au localforage
-  // mettre le sonner components
   // better navbar and adapter le style des cards
 
   const LINKS = [
