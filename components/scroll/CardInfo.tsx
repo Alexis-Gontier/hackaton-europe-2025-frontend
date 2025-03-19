@@ -8,8 +8,8 @@ import {
 
 export default function CardInfo() {
   return (
-    <Card className="w-full h-screen flex flex-col justify-between">
-      <div className="w-full h-1/2 bg-gray-300 flex items-center justify-center">
+    <Card className="w-full h-[500px] flex flex-col justify-between">
+      <div className="w-full h-full bg-gray-300 flex items-center justify-center">
         Img
       </div>
       <CardContent>
