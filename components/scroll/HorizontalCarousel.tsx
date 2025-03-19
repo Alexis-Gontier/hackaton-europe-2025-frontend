@@ -5,6 +5,8 @@ import {
 } from "@/components/ui/carousel"
 import CardInfo from "./CardInfo"
 import CardInfoD from "./CardInfoD"
+import CardInfoV from "./CardInfoV"
+import CardInfoA from "./CardInfoA"
 
 export default function HorizontalCarousel() {
 
@@ -18,10 +20,10 @@ export default function HorizontalCarousel() {
                 <CardInfoD />
             </CarouselItem>
             <CarouselItem>
-                <CardInfo />
+                <CardInfoV />
             </CarouselItem>
             <CarouselItem>
-                <CardInfo />
+                <CardInfoA />
             </CarouselItem>
         </CarouselContent>
     </Carousel>
