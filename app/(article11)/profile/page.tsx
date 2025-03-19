@@ -29,9 +29,12 @@ import {
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import useAuth from "@/hooks/useAuth";
 
 export default function CardWithForm() {
   const [gender, setGender] = React.useState("male");
+
+  const {  logout } = useAuth();
 
   return (
     <Card className="w-screen h-screen">
@@ -104,6 +107,7 @@ export default function CardWithForm() {
             </div>
           </DrawerContent>
         </Drawer>
+        <Button onClick={logout}>Logout</Button>
       </CardFooter>
     </Card>
   );

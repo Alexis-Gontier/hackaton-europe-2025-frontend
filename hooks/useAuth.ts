@@ -119,6 +119,7 @@ export default function useAuth() {
       router.push("/login");
       toast("Inscription réussie, veuillez vous connecter");
     } catch (err: any) {
+      toast(err.message);
       setError(err.message);
       throw err;
     } finally {
@@ -171,9 +172,10 @@ export default function useAuth() {
       }
 
       await localforage.setItem("access_token", data.access_token);
-      router.push("/test");
+      router.push("/");
       toast("Connexion réussie");
     } catch (err: any) {
+      toast(err.message);
       setError(err.message);
       throw err;
     } finally {
