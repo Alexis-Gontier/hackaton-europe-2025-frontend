@@ -1,6 +1,6 @@
+import "@/app/globals.css";
 "use client"
 
-import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import { AvatarDemo } from "@/components/avatar/avatar";
 import { Toaster } from "@/components/ui/sonner"
@@ -23,9 +23,9 @@ export default function RootLayout({
             <AvatarDemo />
           </div>
           {children}
-        </main>
         <Navbar />
         <Toaster />
+        </main>
       </body>
     </html>
   );
