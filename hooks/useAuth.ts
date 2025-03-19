@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import localforage from 'localforage';
+import { toast } from "sonner"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -34,6 +35,7 @@ export default function useAuth() {
         throw new Error(errorData.detail || "Échec de l'inscription");
       }
       router.push("/login");
+      toast("Inscription réussie, veuillez vous connecter");
     } catch (err: any) {
       setError(err.message);
       throw err;
@@ -70,6 +72,7 @@ export default function useAuth() {
 
       await localforage.setItem('access_token', data.access_token);
       router.push("/test");
+      toast("Connexion réussie");
     } catch (err: any) {
       setError(err.message);
       throw err;
@@ -80,11 +83,37 @@ export default function useAuth() {
 
   async function logout() {
     await localforage.removeItem("access_token");
+    toast("Déconnexion réussie");
     router.push("/login");
   }
 
-  async function fetchUser() {
-    // fetch user logic
+  async function fetchUser(id: string) {
+    setLoading(true);
+    setError(null);
+    try {
+      const token = await localforage.getItem("access_token");
+      if (!token) {
+        throw new Error("Utilisateur non authentifié");
+      }
+      const response = await fetch(`${API_URL}/user/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Erreur lors de la récupération des données utilisateur");
+      }
+      const userData = await response.json();
+      return userData;
+    } catch (err: any) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
   }
 
   return {
