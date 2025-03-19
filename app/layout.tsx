@@ -1,10 +1,14 @@
-"use client"
-
 import "@/app/globals.css";
+import type { Metadata } from 'next'
+import Header from "@/components/header/Header";
 import Navbar from "@/components/navbar/Navbar";
-import { AvatarDemo } from "@/components/avatar/avatar";
 import { Toaster } from "@/components/ui/sonner"
-import { usePathname} from 'next/navigation';
+
+export const metadata: Metadata = {
+  title: 'Article 11',
+  description: 'Article 11',
+  keywords: ['article11', 'hackaton', 'hetic', 'europe'],
+};
 
 export default function RootLayout({
   children,
@@ -12,16 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const pathname = usePathname();
-  const pageName = pathname === "/" ? "Home" : pathname.substring(1).charAt(0)+ pathname.slice(2);
+
   return (
     <html lang="en">
-      <body className="">
-        <main className="max-w-[390px] mx-auto px-10 w-screen">
-          <div className="flex my-8 place-content-between">
-            <h1 className="text-3xl font-bold uppercase">{pageName}</h1>
-            <AvatarDemo />
-          </div>
+      <body className="max-w-[390px] mx-auto">
+        <Header />
+        <main className="">
           {children}
         </main>
         <Navbar />

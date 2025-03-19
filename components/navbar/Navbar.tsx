@@ -32,7 +32,7 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="fixed bottom-0 w-full flex justify-around p-2 shadow-md bg-white h-[60px] drop-shadow-sm rounded-t-xl">
+    <nav className="max-w-[390px] mx-auto fixed bottom-0 w-full flex justify-around p-2 shadow-md bg-white h-[60px] drop-shadow-sm rounded-t-xl">
       <div className='flex justify-center gap-10 w-1/2'>
       {LINKS.map((link, index) => (
         <Link
