@@ -90,6 +90,9 @@ export default function RegisterPage() {
       <p>
         Vous avez déjà un compte ? <Link href="/login">Connectez-vous</Link>
       </p>
+      <Link href={"/privacy"}>
+        Privacy Policy
+      </Link>
     </div>
   );
 }
