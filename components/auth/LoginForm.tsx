@@ -57,12 +57,9 @@ export default function LoginForm() {
                   <p className="text-red-500 text-sm">{errors.username.message}</p>
                 )}
               </div>
-              <div className="grid gap-2">
+              <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Mot de passe</Label>
-                  <Link href="/forgot-password" className="text-sm underline-offset-4 hover:underline">
-                    Mot de passe oublié ?
-                  </Link>
                 </div>
                 <Input
                   id="password"
@@ -73,6 +70,11 @@ export default function LoginForm() {
                 {errors.password && (
                   <p className="text-red-500 text-sm">{errors.password.message}</p>
                 )}
+                <div className="flex justify-end">
+                <Link href="/forgot-password" className="text-sm align-end underline-offset-4 underline">
+                  Mot de passe oublié ?
+                </Link>
+                </div>
               </div>
               <Button type="submit" className="w-full cursor-pointer" disabled={isSubmitting}>
                 {isSubmitting ? "Chargement..." : "Se connecter"}
@@ -88,7 +90,6 @@ export default function LoginForm() {
         </CardContent>
       </Card>
 
-      {/* Displaying the login error message */}
       {error && (
         <div className="text-red-500 text-center mt-4">
           <p>{error}</p>
