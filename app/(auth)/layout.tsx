@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            {/* <AuthRoute> */}
+            <AuthRoute>
                 <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-6">
                     <div className="w-full max-w-sm md:max-w-3xl flex flex-col gap-4">
                         {children}
@@ -20,7 +20,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         </div>
                     </div>
                 </div>
-            {/* </AuthRoute> */}
+            </AuthRoute>
         </>
     )
 }

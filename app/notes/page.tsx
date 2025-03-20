@@ -2,19 +2,25 @@ export default function page() {
   return (
     <div>
       <ul>
-        {/* useUser */}
-        {/* SEO */}
-        {/* Faire la page de politique de confidentialité */}
         {/* Layout de connexion */}
+        {/* Gestion des forms avec zod */}
+        {/* SEO */}
+        {/* FAIRE LES CARDS */}
+        {/* Faire la page de politique de confidentialité */}
         {/* hooks message erreur */}
+
+
+
+        {/* useUser */}
         {/* Recup le user id apres login */}
         {/* Possibilité de delete un compte */}
-        {/* Gestion des forms avec zod */}
-
 
         {/* Page forgot password vitirne */}
         {/* Hooks des datas */}
         {/* Faire les routes pour datas des cards */}
+
+        {/* Target blank */}
+        {/* label */}
 
         {/* Mettre le aria-label="Go to profile" */}
         {/* Mettre des skeletons pour les loaders */}
