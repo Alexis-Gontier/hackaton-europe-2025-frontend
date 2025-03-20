@@ -52,8 +52,7 @@ export default function RegisterForm() {
   });
 
   const onSubmit = async (data: FormData) => {
-    const { confirmPassword, ...registerData } = data;
-    await registerUser({ ...registerData, role: "user" });
+    await registerUser({ ...data, role: "user" });
   };
 
   return (
