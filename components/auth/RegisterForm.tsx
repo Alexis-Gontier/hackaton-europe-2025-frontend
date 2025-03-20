@@ -20,7 +20,7 @@ const schema = z
   .object({
     username: z
       .string()
-      .min(3, { message: "Le nom d'utilisateur doit comporter au moins 3 caractères" }),
+      .min(3, { message: "Le nom d&apos;utilisateur doit comporter au moins 3 caractères" }),
     firstname: z.string().min(1, { message: "Le prénom est requis" }),
     name: z.string().min(1, { message: "Le nom de famille est requis" }),
     email: z.string().email({ message: "Veuillez entrer une adresse e-mail valide" }),
@@ -60,7 +60,7 @@ export default function RegisterForm() {
     <div className="flex flex-col gap-6">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">S'inscrire</CardTitle>
+          <CardTitle className="text-2xl">S&apos;inscrire</CardTitle>
           <CardDescription>
             Remplissez les informations ci-dessous pour créer votre compte
           </CardDescription>
@@ -69,7 +69,7 @@ export default function RegisterForm() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="username">Nom d'utilisateur *</Label>
+                <Label htmlFor="username">Nom d&apos;utilisateur *</Label>
                 <Input
                   id="username"
                   type="text"
@@ -148,7 +148,7 @@ export default function RegisterForm() {
                   className="mr-2"
                 />
                 <Label htmlFor="consent">
-                  J'accepte les termes et conditions *
+                  J&apos;accepte les termes et conditions *
                 </Label>
               </div>
               {errors.consent && (
@@ -159,7 +159,7 @@ export default function RegisterForm() {
                 className="w-full cursor-pointer"
                 disabled={isSubmitting || loading}
               >
-                {isSubmitting || loading ? "Chargement..." : "S'inscrire"}
+                {isSubmitting || loading ? "Chargement..." : "S&apos;inscrire"}
               </Button>
               {error && (
                 <p className="text-red-500 text-sm">
@@ -177,14 +177,15 @@ export default function RegisterForm() {
         </CardContent>
       </Card>
       <div className="text-center text-xs text-muted-foreground">
-        En cliquant sur s'inscrire, vous acceptez nos{" "}
+        <p>En cliquant sur s&apos;inscrire, vous acceptez nos termes et conditions.</p>
         <Link href="#" className="underline underline-offset-4 hover:text-primary">
           termes et conditions
         </Link>{" "}
         et notre{" "}
         <Link href="#" className="underline underline-offset-4 hover:text-primary">
           politique de confidentialité
-        </Link>.
+        </Link>
+        .
       </div>
     </div>
   );
