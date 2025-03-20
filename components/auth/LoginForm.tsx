@@ -1,104 +1,102 @@
 "use client";
 
-import { useState } from "react";
-import { useEffect } from "react";
-import useAuth from "@/hooks/useAuth";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import Link from "next/link";
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import useAuth from "@/hooks/useAuth";
+
+const schema = z.object({
+  username: z.string().min(1, "Username is required"),
+  password: z.string().min(6, "Password must be at least 6 characters long"),
+});
+
+type FormData = z.infer<typeof schema>;
 
 export default function LoginForm() {
-  const { login, loading, error } = useAuth();
-  const [loginData, setLoginData] = useState({
-    username: "",
-    password: "",
+  const { login, error } = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: { username: "", password: "" },
   });
 
-  const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setLoginData({
-      ...loginData,
-      [name]: value,
-    });
+  const onSubmit = async (data: FormData) => {
+    await login(data.username, data.password);
   };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await login(loginData.username, loginData.password);
-  };
-
-  useEffect(() => {
-    if (error) {
-      setLoginData((prev) => ({ ...prev, password: "" }));
-    }
-  }, [error]);
 
   return (
     <div className="flex flex-col gap-6">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardTitle className="text-2xl">Connexion</CardTitle>
           <CardDescription>
-            Enter your name user below to login to your account
+            Entrez votre nom d'utilisateur ci-dessous pour vous connecter à votre compte
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="email">Username</Label>
+                <Label htmlFor="username">Nom d'utilisateur</Label>
                 <Input
-                    id="email"
-                    type="text"
-                    name="username"
-                    value={loginData.username}
-                    onChange={handleLoginChange}
-                    placeholder="username"
-                    required
+                  id="username"
+                  type="text"
+                  placeholder="Nom d'utilisateur"
+                  {...register("username")}
                 />
+                {errors.username && (
+                  <p className="text-red-500 text-sm">{errors.username.message}</p>
+                )}
               </div>
               <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="password">Mot de passe</Label>
+                  <Link href="/forgot-password" className="text-sm underline-offset-4 hover:underline">
+                    Mot de passe oublié ?
+                  </Link>
                 </div>
                 <Input
-                    id="password"
-                    type="password"
-                    name="password"
-                    value={loginData.password}
-                    placeholder="password"
-                    onChange={handleLoginChange}
-                    required
+                  id="password"
+                  type="password"
+                  placeholder="Mot de passe"
+                  {...register("password")}
                 />
-                    <Link href="/forgot-password" className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
-                        Forgot password?
-                    </Link>
+                {errors.password && (
+                  <p className="text-red-500 text-sm">{errors.password.message}</p>
+                )}
               </div>
-              <Button type="submit" className="w-full cursor-pointer">
-                {loading ? "Loading..." : "Login"}
+              <Button type="submit" className="w-full cursor-pointer" disabled={isSubmitting}>
+                {isSubmitting ? "Chargement..." : "Se connecter"}
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
-                <Link href="/register" className="underline underline-offset-4">
-                    Register
-                </Link>
+              Vous n'avez pas de compte ?{" "}
+              <Link href="/register" className="underline underline-offset-4">
+                Inscrivez-vous
+              </Link>
             </div>
           </form>
         </CardContent>
       </Card>
-      <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-primary  ">
-        By clicking continue, you agree to our <Link href={"#"}>Terms of Service</Link>{" "}
-        and <Link href={"#"}>Privacy Policy</Link>
+      <div className="text-center text-xs text-muted-foreground">
+        En cliquant sur continuer, vous acceptez nos{" "}
+        <Link href="#" className="underline underline-offset-4 hover:text-primary">
+          Conditions d'utilisation
+        </Link>{" "}
+        et notre{" "}
+        <Link href="#" className="underline underline-offset-4 hover:text-primary">
+          Politique de confidentialité
+        </Link>.
       </div>
     </div>
-  )
+  );
 }

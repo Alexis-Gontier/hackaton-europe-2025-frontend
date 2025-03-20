@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import useAuth from "@/hooks/useAuth";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,30 +14,46 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import useAuth from "@/hooks/useAuth";
 
-export default function RegisterForm() {
-  const { register, loading, error } = useAuth();
-  const [registerData, setRegisterData] = useState({
-    username: "",
-    firstname: "",
-    name: "",
-    email: "",
-    password: "",
-    consent: false,
-    role: "user",
+const schema = z
+  .object({
+    username: z
+      .string()
+      .min(3, { message: "Username must be at least 3 characters long" }),
+    firstname: z.string().min(1, { message: "First name is required" }),
+    name: z.string().min(1, { message: "Last name is required" }),
+    email: z.string().email({ message: "Please enter a valid email address" }),
+    password: z
+      .string()
+      .min(6, { message: "Password must be at least 6 characters long" }),
+    confirmPassword: z
+      .string()
+      .min(6, { message: "Password confirmation must be at least 6 characters long" }),
+    consent: z.literal(true, {
+      errorMap: () => ({ message: "You must accept the terms and conditions" }),
+    }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
   });
 
-  const handleRegisterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setRegisterData({
-      ...registerData,
-      [name]: type === "checkbox" ? checked : value,
-    });
-  };
+type FormData = z.infer<typeof schema>;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await register(registerData);
+export default function RegisterForm() {
+  const { register: registerUser, loading, error } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = async (data: FormData) => {
+    const { confirmPassword, ...registerData } = data;
+    await registerUser({ ...registerData, role: "user" });
   };
 
   return (
@@ -45,94 +62,115 @@ export default function RegisterForm() {
         <CardHeader>
           <CardTitle className="text-2xl">Register</CardTitle>
           <CardDescription>
-            Fill in the details below to create your account
+            Fill in the information below to create your account
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-6">
-              {error && <p className="text-red-500">{error}</p>}
               <div className="grid gap-2">
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="username">Username *</Label>
                 <Input
                   id="username"
                   type="text"
-                  name="username"
-                  value={registerData.username}
-                  onChange={handleRegisterChange}
                   placeholder="john.doe"
-                  required
+                  {...register("username")}
                 />
+                {errors.username && (
+                  <p className="text-red-500 text-sm">{errors.username.message}</p>
+                )}
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="firstname">First Name</Label>
+                <Label htmlFor="firstname">First Name *</Label>
                 <Input
                   id="firstname"
                   type="text"
-                  name="firstname"
-                  value={registerData.firstname}
-                  onChange={handleRegisterChange}
                   placeholder="John"
-                  required
+                  {...register("firstname")}
                 />
+                {errors.firstname && (
+                  <p className="text-red-500 text-sm">{errors.firstname.message}</p>
+                )}
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="name">Last Name</Label>
+                <Label htmlFor="name">Last Name *</Label>
                 <Input
                   id="name"
                   type="text"
-                  name="name"
-                  value={registerData.name}
-                  onChange={handleRegisterChange}
                   placeholder="Doe"
-                  required
+                  {...register("name")}
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-sm">{errors.name.message}</p>
+                )}
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Email *</Label>
                 <Input
                   id="email"
                   type="email"
-                  name="email"
-                  value={registerData.email}
-                  onChange={handleRegisterChange}
-                  placeholder="m@example.com"
-                  required
+                  placeholder="mail@example.com"
+                  {...register("email")}
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email.message}</p>
+                )}
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Password *</Label>
                 <Input
                   id="password"
                   type="password"
-                  name="password"
-                  value={registerData.password}
-                  onChange={handleRegisterChange}
                   placeholder="********"
-                  required
+                  {...register("password")}
                 />
+                {errors.password && (
+                  <p className="text-red-500 text-sm">{errors.password.message}</p>
+                )}
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="confirmPassword">Confirm Password *</Label>
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="********"
+                  {...register("confirmPassword")}
+                />
+                {errors.confirmPassword && (
+                  <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>
+                )}
               </div>
               <div className="flex items-center">
                 <input
                   type="checkbox"
-                  name="consent"
                   id="consent"
-                  checked={registerData.consent}
-                  onChange={handleRegisterChange}
+                  {...register("consent")}
                   className="mr-2"
                 />
                 <Label htmlFor="consent">
-                  I accept the Terms of Service
+                  I accept the terms and conditions *
                 </Label>
               </div>
-              <Button type="submit" className="w-full cursor-pointer" disabled={loading}>
-                {loading ? "Loading..." : "Register"}
+              {errors.consent && (
+                <p className="text-red-500 text-sm">{errors.consent.message}</p>
+              )}
+              <Button
+                type="submit"
+                className="w-full cursor-pointer"
+                disabled={isSubmitting || loading}
+              >
+                {isSubmitting || loading ? "Loading..." : "Register"}
               </Button>
+              {error && (
+                <p className="text-red-500 text-sm">
+                  An error occurred: {error}
+                </p>
+              )}
             </div>
             <div className="mt-4 text-center text-sm">
               Already have an account?{" "}
               <Link href="/login" className="underline underline-offset-4">
-                Login
+                Log in
               </Link>
             </div>
           </form>
@@ -140,8 +178,8 @@ export default function RegisterForm() {
       </Card>
       <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-primary">
         By clicking continue, you agree to our{" "}
-        <Link href={"#"}>Terms of Service</Link> and{" "}
-        <Link href={"#"}>Privacy Policy</Link>
+        <Link href="#">Terms of Service</Link> and{" "}
+        <Link href="#">Privacy Policy</Link>.
       </div>
     </div>
   );
