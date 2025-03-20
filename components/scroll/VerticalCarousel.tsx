@@ -56,7 +56,7 @@ export default function VerticalCarousel() {
                     <HorizontalCarousel />
                 </CarouselItem>
             </CarouselContent>
-            <div className="fixed left-5 top-1/2 transform -translate-y-1/2 py-2 text-center text-sm text-muted-foreground">
+            <div className="fixed left-3 top-1/2 transform -translate-y-1/2 py-2 text-center text-sm text-muted-foreground">
                 <div className="flex flex-col items-center space-y-2">
                     {Array.from({ length: count }).map((_, index) => (
                         <div

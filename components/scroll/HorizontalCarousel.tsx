@@ -12,6 +12,8 @@ import CardInfo from "./CardInfo"
 import CardInfoD from "./CardInfoD"
 import CardInfoV from "./CardInfoV"
 import CardInfoA from "./CardInfoA"
+import Card1 from "./cards/Card1"
+import Card2 from "./cards/Card2"
 
 export default function HorizontalCarousel() {
 
@@ -36,10 +38,10 @@ export default function HorizontalCarousel() {
     <Carousel setApi={setApi} className="relative w-full h-full">
         <CarouselContent>
             <CarouselItem>
-                <CardInfo />
+                <Card1 />
             </CarouselItem>
             <CarouselItem>
-                <CardInfoD />
+                <Card2 />
             </CarouselItem>
             <CarouselItem>
                 <CardInfoV />
