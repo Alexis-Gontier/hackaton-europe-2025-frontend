@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/accordion"
 
 import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { AlertDialogAction } from "@/components/ui/alert-dialog"
 
 import {
   Select,
@@ -104,7 +106,7 @@ export default function AccordionAccount() {
   };
 
   return (
-    <div>
+    <div className="px-8">
       <div className="mt-8">
         <Accordion type="single" collapsible className="w-full" onValueChange={handleAccordionChange}>
           <AccordionItem value="item-1">
@@ -120,7 +122,7 @@ export default function AccordionAccount() {
                     {europeanCountries.map((country) => (
                       <SelectItem key={country.name} value={country.name}>
                         <div className="flex items-center">
-                          <img src={country.flag} alt={country.name} className="w-6 h-4 mr-2" />
+                          <Image src={country.flag} alt={country.name} width={24} height={16} className="mr-2" />
                           {country.name}
                         </div>
                       </SelectItem>
