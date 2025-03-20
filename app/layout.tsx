@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="max-w-[390px] mx-auto">
+      <body className="max-w-iphone mx-auto min-h-screen">
         <main>{children}</main>
         <Toaster />
       </body>
