@@ -119,3 +119,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+@theme {
+  --spacing-iphone: 390px;
+  --spacing-card: 80vh;
+}
