@@ -124,3 +124,21 @@
   --spacing-iphone: 390px;
   --spacing-card: 80vh;
 }
+/* @font-face {
+  font-family: 'Newake';
+  src: url('/fonts/NewakeFont.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/Futura.ttc') format('truetype-collection');
+}
+
+:root {
+  --font-primary: 'Newake', sans-serif;
+  --font-secondary: 'Futura', sans-serif;
+}
+
+body {
+  font-family: var(--font-secondary);
+} */
