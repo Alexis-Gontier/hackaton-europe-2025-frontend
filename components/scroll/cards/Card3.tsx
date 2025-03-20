@@ -26,10 +26,6 @@ export default function Card3() {
             <span className="text-red-500 blur-[2px]">🔴</span>
             <span className="font-semibold">Progressive/Left Position: Strong regulations are necessary to prevent discrimination and AI misuse.</span>
           </li>
-          <li className="flex items-start gap-2">
-            <span className="text-red-500 blur-[2px]">🔴</span>
-            <span className="font-semibold">Conservative/Right Position: Strict regulations may hinder innovation but protect consumer rights.</span>
-          </li>
         </ul>
       </CardContent>
       <p className="absolute bottom-6 left-6">Source: <Link href={"https://www.theguardian.com/europe"} className="italic text-blue-500 underline">The Guardian</Link></p>
