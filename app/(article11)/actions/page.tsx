@@ -45,7 +45,7 @@ const cardData = [
 
 export default function Page() {
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="px-8 flex flex-col space-y-4">
       {cardData.map((data) => (
         <Link key={data.id} href={`/actions/${data.id}`}>
           <Card id={`card-${data.id}`} className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] shadow-blue-500/40">

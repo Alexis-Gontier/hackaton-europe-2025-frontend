@@ -6,7 +6,7 @@ import { CircleChevronLeft } from 'lucide-react'
 
 export default function Page() {
   return (
-    <div>
+    <div className='px-8'>
       <div className='mt-4 flex text-xl'>
         <Link href="/actions" className=''>
           <CircleChevronLeft className='h-7 w-6' />
