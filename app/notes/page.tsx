@@ -3,26 +3,29 @@ export default function page() {
     <div>
       <ul>
         {/* useUser */}
-        {/* Mettre des skeletons pour les loaders */}
-        {/* Faire la page de politique de confidentialité */}
         {/* SEO */}
+        {/* Faire la page de politique de confidentialité */}
+        {/* Layout de connexion */}
+        {/* hooks message erreur */}
+        {/* Recup le user id apres login */}
+        {/* Possibilité de delete un compte */}
+        {/* Gestion des forms avec zod */}
+
+
+        {/* Page forgot password vitirne */}
+        {/* Hooks des datas */}
+        {/* Faire les routes pour datas des cards */}
+
+        {/* Mettre le aria-label="Go to profile" */}
+        {/* Mettre des skeletons pour les loaders */}
         {/* DarkMode */}
         {/* Meilleur structure de code */}
         {/* Recheck de code */}
-        {/* Layout de connexion */}
         {/* Faire un design desktop */}
         {/* Regarder le chatGPT like */}
-        {/* hooks message erreur */}
         {/* Commit en anglais */}
         {/* Voir la gestion d'erreurs */}
-        {/* Recup le user id apres login */}
-        {/* Hooks des datas */}
-        {/* Navbar */}
-        {/* Possibilité de delete un compte */}
-        {/* Page forgot password vitirne */}
-        {/* Gestion des forms avec zod */}
         {/* Regarder pour la offline page */}
-        {/* Faire les routes pour datas des cards */}
       </ul>
     </div>
   )
