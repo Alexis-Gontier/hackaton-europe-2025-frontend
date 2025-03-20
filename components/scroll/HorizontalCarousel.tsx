@@ -37,18 +37,18 @@ export default function HorizontalCarousel({ onSlideChange }: HorizontalCarousel
     }, [api, onSlideChange])
 
     return (
-        <Carousel setApi={setApi} className="relative w-full h-full">
-            <CarouselContent>
-                <CarouselItem>
+        <Carousel setApi={setApi} className="relative w-full h-full ">
+            <CarouselContent className="pl-6">
+                <CarouselItem className="basis-14/16">
                     <Card1 />
                 </CarouselItem>
-                <CarouselItem>
+                <CarouselItem className="basis-14/16">
                     <Card2 />
                 </CarouselItem>
-                <CarouselItem>
+                <CarouselItem className="basis-14/16">
                     <Card3 />
                 </CarouselItem>
-                <CarouselItem>
+                <CarouselItem className="basis-14/16">
                     <Card4 />
                 </CarouselItem>
             </CarouselContent>
