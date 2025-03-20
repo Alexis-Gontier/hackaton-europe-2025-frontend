@@ -20,22 +20,22 @@ const schema = z
   .object({
     username: z
       .string()
-      .min(3, { message: "Username must be at least 3 characters long" }),
-    firstname: z.string().min(1, { message: "First name is required" }),
-    name: z.string().min(1, { message: "Last name is required" }),
-    email: z.string().email({ message: "Please enter a valid email address" }),
+      .min(3, { message: "Le nom d'utilisateur doit comporter au moins 3 caractères" }),
+    firstname: z.string().min(1, { message: "Le prénom est requis" }),
+    name: z.string().min(1, { message: "Le nom de famille est requis" }),
+    email: z.string().email({ message: "Veuillez entrer une adresse e-mail valide" }),
     password: z
       .string()
-      .min(6, { message: "Password must be at least 6 characters long" }),
+      .min(6, { message: "Le mot de passe doit comporter au moins 6 caractères" }),
     confirmPassword: z
       .string()
-      .min(6, { message: "Password confirmation must be at least 6 characters long" }),
+      .min(6, { message: "La confirmation du mot de passe doit comporter au moins 6 caractères" }),
     consent: z.literal(true, {
-      errorMap: () => ({ message: "You must accept the terms and conditions" }),
+      errorMap: () => ({ message: "Vous devez accepter les termes et conditions" }),
     }),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
+    message: "Les mots de passe ne correspondent pas",
     path: ["confirmPassword"],
   });
 
@@ -60,16 +60,16 @@ export default function RegisterForm() {
     <div className="flex flex-col gap-6">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">Register</CardTitle>
+          <CardTitle className="text-2xl">S'inscrire</CardTitle>
           <CardDescription>
-            Fill in the information below to create your account
+            Remplissez les informations ci-dessous pour créer votre compte
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="username">Username *</Label>
+                <Label htmlFor="username">Nom d'utilisateur *</Label>
                 <Input
                   id="username"
                   type="text"
@@ -81,7 +81,7 @@ export default function RegisterForm() {
                 )}
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="firstname">First Name *</Label>
+                <Label htmlFor="firstname">Prénom *</Label>
                 <Input
                   id="firstname"
                   type="text"
@@ -93,7 +93,7 @@ export default function RegisterForm() {
                 )}
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="name">Last Name *</Label>
+                <Label htmlFor="name">Nom de famille *</Label>
                 <Input
                   id="name"
                   type="text"
@@ -105,7 +105,7 @@ export default function RegisterForm() {
                 )}
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="email">Email *</Label>
+                <Label htmlFor="email">E-mail *</Label>
                 <Input
                   id="email"
                   type="email"
@@ -117,7 +117,7 @@ export default function RegisterForm() {
                 )}
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="password">Password *</Label>
+                <Label htmlFor="password">Mot de passe *</Label>
                 <Input
                   id="password"
                   type="password"
@@ -129,7 +129,7 @@ export default function RegisterForm() {
                 )}
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="confirmPassword">Confirm Password *</Label>
+                <Label htmlFor="confirmPassword">Confirmer le mot de passe *</Label>
                 <Input
                   id="confirmPassword"
                   type="password"
@@ -148,7 +148,7 @@ export default function RegisterForm() {
                   className="mr-2"
                 />
                 <Label htmlFor="consent">
-                  I accept the terms and conditions *
+                  J'accepte les termes et conditions *
                 </Label>
               </div>
               {errors.consent && (
@@ -159,27 +159,32 @@ export default function RegisterForm() {
                 className="w-full cursor-pointer"
                 disabled={isSubmitting || loading}
               >
-                {isSubmitting || loading ? "Loading..." : "Register"}
+                {isSubmitting || loading ? "Chargement..." : "S'inscrire"}
               </Button>
               {error && (
                 <p className="text-red-500 text-sm">
-                  An error occurred: {error}
+                  Une erreur est survenue : {error}
                 </p>
               )}
             </div>
             <div className="mt-4 text-center text-sm">
-              Already have an account?{" "}
+              Vous avez déjà un compte ?{" "}
               <Link href="/login" className="underline underline-offset-4">
-                Log in
+                Connectez-vous
               </Link>
             </div>
           </form>
         </CardContent>
       </Card>
-      <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-primary">
-        By clicking continue, you agree to our{" "}
-        <Link href="#">Terms of Service</Link> and{" "}
-        <Link href="#">Privacy Policy</Link>.
+      <div className="text-center text-xs text-muted-foreground">
+        En cliquant sur s'inscrire, vous acceptez nos{" "}
+        <Link href="#" className="underline underline-offset-4 hover:text-primary">
+          termes et conditions
+        </Link>{" "}
+        et notre{" "}
+        <Link href="#" className="underline underline-offset-4 hover:text-primary">
+          politique de confidentialité
+        </Link>.
       </div>
     </div>
   );
