@@ -30,7 +30,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 
@@ -93,6 +92,10 @@ europeanCountries.sort((a, b) => a.name.localeCompare(b.name, 'fr', { sensitivit
 export default function AccordionAccount() {
   const [showAlert, setShowAlert] = useState(false);
 
+  const handleRefuseClick = () => {
+    setShowAlert(true);
+  };
+
   const handleAccordionChange = (value: string) => {
     if (value === "item-6") {
       setShowAlert(true);
@@ -102,81 +105,106 @@ export default function AccordionAccount() {
   };
 
   return (
-    <div className="mt-8">
-      <Accordion type="single" collapsible className="w-full" onValueChange={handleAccordionChange}>
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Nationality</AccordionTrigger>
-          <AccordionContent>
-            <Select defaultValue="Allemagne">
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a country" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>European Countries</SelectLabel>
-                  {europeanCountries.map((country) => (
-                    <SelectItem key={country.name} value={country.name}>
-                      <div className="flex items-center">
-                        <img src={country.flag} alt={country.name} className="w-6 h-4 mr-2" />
-                        {country.name}
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>Password</AccordionTrigger>
-          <AccordionContent>
-            <Input type="password" />
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3">
-          <AccordionTrigger>Email</AccordionTrigger>
-          <AccordionContent>
-            <Input type="mail" />
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-4">
-          <AccordionTrigger>Date of Birth</AccordionTrigger>
-          <AccordionContent>
-            <Input type="date" />
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-5">
-          <AccordionTrigger>ID Information</AccordionTrigger>
-          <AccordionContent>
-            <Input type="text" />
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-6">
-          <AccordionTrigger>Privacy</AccordionTrigger>
-          <AccordionContent>
-            {showAlert && (
-              <AlertDialog open={showAlert} onOpenChange={setShowAlert}>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This action cannot be undone. This will permanently delete your
-                      account and remove your data from our servers.
-                      <br />
-                      <a href="terms-of-service" rel="noopener noreferrer" className="text-blue-500 underline">
-                        View GDPR Policy
-                      </a>
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            )}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+    <div>
+      <div className="mt-8">
+        <Accordion type="single" collapsible className="w-full" onValueChange={handleAccordionChange}>
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Nationality</AccordionTrigger>
+            <AccordionContent>
+              <Select defaultValue="Allemagne">
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a country" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>European Countries</SelectLabel>
+                    {europeanCountries.map((country) => (
+                      <SelectItem key={country.name} value={country.name}>
+                        <div className="flex items-center">
+                          <img src={country.flag} alt={country.name} className="w-6 h-4 mr-2" />
+                          {country.name}
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger>Password</AccordionTrigger>
+            <AccordionContent>
+              <Input type="password" />
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Email</AccordionTrigger>
+            <AccordionContent>
+              <Input type="mail" />
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-4">
+            <AccordionTrigger>Date of Birth</AccordionTrigger>
+            <AccordionContent>
+              <Input type="date" />
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-5">
+            <AccordionTrigger>ID Information</AccordionTrigger>
+            <AccordionContent>
+              <Input type="text" />
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-6">
+            <AccordionTrigger>Privacy</AccordionTrigger>
+            <AccordionContent>
+              {showAlert && (
+                <AlertDialog open={showAlert} onOpenChange={setShowAlert}>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This action cannot be undone. This will permanently delete your
+                        account and remove your data from our servers.
+                        <br />
+                        <a href="terms-of-service" rel="noopener noreferrer" className="text-blue-500 underline">
+                          View GDPR Policy
+                        </a>
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              )}
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
+      <div>
+        <Button onClick={handleRefuseClick} className="bg-red-500 hover:bg-red-600 flex mt-8">
+          Delete my Profile
+        </Button>
+        <AlertDialog open={showAlert} onOpenChange={setShowAlert}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
+                <br />
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction className="bg-red-500 hover:bg-red-600">
+                <a href="/login">Continue</a>
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
     </div>
   );
 }
