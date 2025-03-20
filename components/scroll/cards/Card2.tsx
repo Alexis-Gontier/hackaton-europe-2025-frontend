@@ -1,22 +1,18 @@
 import {
   Card,
-  CardContent,
 } from "@/components/ui/card";
 import Link from "next/link";
 
 export default function Card2() {
   return (
     <Card
-      className="relative w-full h-[calc(100vh-200px)] border-6 border-green-400 rounded-4xl"
+      className="relative w-full h-[calc(100vh-200px)] rounded-4xl bg-clip-padding bg-gradient-to-b from-[#00ff3c] to-[#1f9900] p-2"
     >
-      <CardContent className="flex flex-col items-center justify-center gap-4 h-full text-center">
-        <h2 className="text-3xl font-bold">
-          EU Defense Spending Increase
-        </h2>
-        <div className="w-5/6 h-1 bg-green-500 rounded-full"></div>
-        <p className="text-base">The European Union plans a historic rise in defense spending to bolster its defense capabilities.</p>
-      </CardContent>
-      <p className="absolute bottom-6 left-6">Source: <Link href={"https://www.theguardian.com/europe"} className="italic text-blue-500 underline">The Guardian</Link></p>
+      <div className="w-full h-full rounded-3xl bg-white p-6 flex flex-col justify-center items-center text-center gap-4">
+        <h2 className="text-4xl font-extrabold after:content-[''] after:mt-3 after:block after:w-full after:h-1 after:bg-gradient-to-b after:from-[#00ff3c] after:to-[#1f9900] after:blur-[2px]">CONTEXT</h2>
+        <p className="font-semibold">In response to escalating geopolitical tensions and security concerns, EU leaders have agreed to significantly increase defense expenditures. This move aims to enhance the EU's autonomous defense capabilities and reduce reliance on external powers.</p>
+      </div>
+      <p className="absolute bottom-6 left-6">Source: <Link href={"https://www.theguardian.com/europe"} target="_blank" className="blur-[.5px] italic text-blue-500 underline">The Guardian</Link></p>
     </Card>
   );
 }
