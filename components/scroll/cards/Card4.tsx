@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { X, Menu, Check } from 'lucide-react';
+import { toast } from "sonner";
 
 export default function Card4() {
   const [visibleDiv, setVisibleDiv] = useState<string | null>(null);
@@ -23,11 +24,20 @@ export default function Card4() {
     }
   };
 
+  const handleAgree = () => {
+    toast.success("You have agreed");
+  }
+
   return (
     <Card className={`relative w-full h-[calc(100vh-200px)] p-2 bg-clip-padding bg-gradient-to-l ${gradient} rounded-4xl`}>
       {visibleDiv === null && (
-        <div className="w-full h-full rounded-3xl bg-white p-6 flex flex-col justify-end items-center gap-10">
-          <h2 className="text-5xl font-extrabold after:content-[''] after:mt-3 after:block after:w-full after:h-1 after:bg-gradient-to-l after:from-[#33FF00] after:to-[#FF1500] after:blur-[2px]">Vote</h2>
+        <div className="w-full h-full rounded-3xl bg-white p-6 flex flex-col justify-between items-center gap-10">
+          <h2 className="text-3xl text-center">
+              EU Defense Spending Increase
+          </h2>
+          <h3 className="text-5xl font-extrabold after:content-[''] after:mt-3 after:block after:w-full after:h-1 after:bg-gradient-to-l after:from-[#33FF00] after:to-[#FF1500] after:blur-[2px]">
+            Vote
+          </h3>
           <div className="flex gap-4">
             <div className="flex flex-col gap-2 justify-center items-center">
               <label htmlFor="desagree" className="uppercase text-red-500 font-bold">desagree</label>
@@ -39,7 +49,7 @@ export default function Card4() {
             </div>
             <div className="flex flex-col gap-2 justify-center items-center">
               <label htmlFor="agree" className="uppercase text-green-300 font-bold">agree</label>
-              <button id="agree" onClick={() => handleClick("agree")} className="cursor-pointer border-3 border-green-300 rounded-full p-2"><Check size={48} color="lightgreen"/></button>
+              <button id="agree" onClick={() => handleAgree()} className="cursor-pointer border-3 border-green-300 rounded-full p-2"><Check size={48} color="lightgreen"/></button>
             </div>
           </div>
         </div>
@@ -69,7 +79,6 @@ export default function Card4() {
            <DesagreeCard>Damages the environment </DesagreeCard>
            <DesagreeCard> Ignores public interest</DesagreeCard>
            <DesagreeCard>I don t trust the decisionmakers</DesagreeCard>
-           <DesagreeCard>Other (please specifiy)..</DesagreeCard>
         </div>
       )}
 
@@ -83,7 +92,14 @@ export default function Card4() {
 }
 
 function DesagreeCard({ children }: { children: React.ReactNode }) {
+
+  const handleClick = () => {
+    toast.success("Thanks for your feedback");
+  }
+
   return (
-    <p className="w-full px-6 text-start leading-4 py-2 border-2 border-red-500 font-semibold rounded-full">{children}</p>
+    <button onClick={handleClick} className="w-full px-6 text-start leading-4 py-2 border-2 border-red-500 font-semibold rounded-full">
+      {children}
+    </button>
   );
 }
