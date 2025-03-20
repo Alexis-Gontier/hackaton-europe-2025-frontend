@@ -39,18 +39,18 @@ export default function LoginForm() {
         <CardHeader>
           <CardTitle className="text-2xl">Connexion</CardTitle>
           <CardDescription>
-            Entrez votre nom d'utilisateur ci-dessous pour vous connecter à votre compte
+            Entrez votre nom d&apos;utilisateur ci-dessous pour vous connecter à votre compte
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="username">Nom d'utilisateur</Label>
+                <Label htmlFor="username">Nom d&apos;utilisateur</Label>
                 <Input
                   id="username"
                   type="text"
-                  placeholder="Nom d'utilisateur"
+                  placeholder="Nom d&apos;utilisateur"
                   {...register("username")}
                 />
                 {errors.username && (
@@ -79,7 +79,7 @@ export default function LoginForm() {
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Vous n'avez pas de compte ?{" "}
+              Vous n&apos;avez pas de compte ?{" "}
               <Link href="/register" className="underline underline-offset-4">
                 Inscrivez-vous
               </Link>
@@ -87,10 +87,18 @@ export default function LoginForm() {
           </form>
         </CardContent>
       </Card>
+
+      {/* Displaying the login error message */}
+      {error && (
+        <div className="text-red-500 text-center mt-4">
+          <p>{error}</p>
+        </div>
+      )}
+
       <div className="text-center text-xs text-muted-foreground">
         En cliquant sur continuer, vous acceptez nos{" "}
         <Link href="#" className="underline underline-offset-4 hover:text-primary">
-          Conditions d'utilisation
+          Conditions d&apos;utilisation
         </Link>{" "}
         et notre{" "}
         <Link href="#" className="underline underline-offset-4 hover:text-primary">
