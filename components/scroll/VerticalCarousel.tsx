@@ -52,7 +52,7 @@ export default function VerticalCarousel() {
             className="w-full relative"
         >
             <CarouselContent className="h-screen">
-                <CarouselItem>
+                <CarouselItem className="">
                     <HorizontalCarousel onSlideChange={handleHorizontalChange} />
                 </CarouselItem>
                 <CarouselItem>
@@ -65,12 +65,12 @@ export default function VerticalCarousel() {
                     <CardEnd />
                 </CarouselItem>
             </CarouselContent>
-            <div className={`fixed left-3 top-1/2 transform -translate-y-1/2 py-2 text-center text-sm text-muted-foreground transition-opacity duration-300 ${horizontalCurrent > 1 ? 'opacity-0' : 'opacity-100'}`}>
+            <div className={`fixed left-2 top-1/2 transform -translate-y-1/2 py-2 text-center text-sm text-muted-foreground transition-opacity duration-300 ${horizontalCurrent > 1 ? 'opacity-0' : 'opacity-100'}`}>
                 <div className="flex flex-col items-center space-y-2">
                     {Array.from({ length: count }).map((_, index) => (
                         <div
                             key={index}
-                            className={`h-2 w-2 rounded-full duration-400 ${current === index + 1 ? 'bg-blue-500 h-3 w-3' : 'bg-gray-300'} ${index === current - 2 || index === current ? 'h-3 w-3 bg-gray-200' : ''}`}
+                            className={`h-2 w-2 rounded-full duration-400 ${current === index + 1 ? 'bg-blue-500 h-9 w-3' : 'h-[10px] w-[10px] bg-gray-300'} ${index === current - 2 || index === current ? 'h-3 w-3 bg-gray-200' : ''}`}
                         />
                     ))}
                 </div>
