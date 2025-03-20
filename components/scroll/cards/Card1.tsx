@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Card2() {
   return (
-    <Card className="relative w-full h-[calc(100vh-200px)] rounded-4xl bg-clip-padding bg-gradient-to-b from-[#00A6FF] to-[#007AFF] p-2 shadow-[0_-10px_20px_rgba(0,0,0,0.3)]">
+    <Card className="relative w-full h-[calc(100vh-200px)] rounded-4xl bg-clip-padding bg-gradient-to-b from-[#00A6FF] to-[#007AFF] p-2">
       <div className="relative w-full h-full rounded-3xl overflow-hidden">
         {/* Image de fond avec effet blur */}
         <div className="absolute inset-0 bg-[url('/bg-card.png')] bg-cover bg-center filter blur-xs" />
