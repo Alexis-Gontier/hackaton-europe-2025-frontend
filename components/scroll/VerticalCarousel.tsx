@@ -14,6 +14,7 @@ export default function VerticalCarousel() {
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
     const [count, setCount] = React.useState(0)
+    const [horizontalCurrent, setHorizontalCurrent] = React.useState(0)
 
     React.useEffect(() => {
         if (!api) {
@@ -37,6 +38,10 @@ export default function VerticalCarousel() {
         };
     }, []);
 
+    const handleHorizontalChange = (index: number) => {
+        setHorizontalCurrent(index)
+    }
+
     return (
         <Carousel
             setApi={setApi}
@@ -44,23 +49,23 @@ export default function VerticalCarousel() {
                 align: "start",
             }}
             orientation="vertical"
-            className="w-full"
+            className="w-full relative"
         >
             <CarouselContent className="h-screen">
                 <CarouselItem>
-                    <HorizontalCarousel />
+                    <HorizontalCarousel onSlideChange={handleHorizontalChange} />
                 </CarouselItem>
                 <CarouselItem>
-                    <HorizontalCarousel />
+                    <HorizontalCarousel onSlideChange={handleHorizontalChange} />
                 </CarouselItem>
                 <CarouselItem>
-                    <HorizontalCarousel />
+                    <HorizontalCarousel onSlideChange={handleHorizontalChange} />
                 </CarouselItem>
                 <CarouselItem>
                     <CardEnd />
                 </CarouselItem>
             </CarouselContent>
-            <div className="fixed left-3 top-1/2 transform -translate-y-1/2 py-2 text-center text-sm text-muted-foreground">
+            <div className={`fixed left-3 top-1/2 transform -translate-y-1/2 py-2 text-center text-sm text-muted-foreground transition-opacity duration-300 ${horizontalCurrent > 1 ? 'opacity-0' : 'opacity-100'}`}>
                 <div className="flex flex-col items-center space-y-2">
                     {Array.from({ length: count }).map((_, index) => (
                         <div
