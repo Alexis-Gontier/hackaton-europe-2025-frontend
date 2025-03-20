@@ -15,9 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="max-w-iphone mx-auto min-h-screen">
+      <body className="max-w-iphone mx-auto min-h-screen font-futura">
+        <Toaster position="top-center" />
         <main>{children}</main>
-        <Toaster />
       </body>
     </html>
   );
