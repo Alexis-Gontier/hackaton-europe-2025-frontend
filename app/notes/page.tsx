@@ -3,6 +3,7 @@ export default function page() {
     <div>
       <ul>
 
+        {/* Preparer une phrase pour remercier les allemands */}
         {/* Btn de scroll */}
         {/* skeleton */}
         {/* card a gauche et droite */}
