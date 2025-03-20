@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useState } from "react";
+import  { useState } from "react";
+import Image from "next/image";
 
 import {
   Accordion,
@@ -23,16 +24,13 @@ import {
 
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
 
 const europeanCountries = [
   { name: "Allemagne", flag: "/flags/germany.png" },
@@ -116,10 +114,10 @@ export default function AccordionAccount() {
                   <SelectLabel>European Countries</SelectLabel>
                   {europeanCountries.map((country) => (
                     <SelectItem key={country.name} value={country.name}>
-                      <div className="flex items-center">
-                        <img src={country.flag} alt={country.name} className="w-6 h-4 mr-2" />
+                        <div className="flex items-center">
+                        <Image src={country.flag} alt={country.name} width={24} height={16} className="mr-2" />
                         {country.name}
-                      </div>
+                        </div>
                     </SelectItem>
                   ))}
                 </SelectGroup>

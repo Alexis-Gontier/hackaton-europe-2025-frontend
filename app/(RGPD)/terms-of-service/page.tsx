@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from "react";
-import Head from "next/head";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -25,12 +24,8 @@ const RgpdPage: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>Politique de Confidentialité</title>
-        <meta name="description" content="Politique de confidentialité et consentement à l'utilisation des données." />
-      </Head>
-      <main className="max-w-4xl mx-auto p-6">
-        <h1 className="text-2xl font-bold mb-4">Politique de Confidentialité et Consentement à l'Utilisation des Données</h1>
+      <div className="max-w-4xl mx-auto p-6">
+        <h1 className="text-2xl font-bold mb-4">Politique de Confidentialité et Consentement à l&apos;Utilisation des Données</h1>
         
         <section className="mb-6">
           <h2 className="text-xl font-semibold">1. Introduction</h2>
@@ -41,7 +36,7 @@ const RgpdPage: React.FC = () => {
 
         <section className="mb-6">
           <h2 className="text-xl font-semibold">2. Responsable du Traitement</h2>
-          <p>Le responsable du traitement des données est [Nom de l'entreprise], situé à [Adresse], joignable à [Email de contact].</p>
+          <p>Le responsable du traitement des données est [Nom de l&apos;entreprise], situé à [Adresse], joignable à [Email de contact].</p>
         </section>
 
         <section className="mb-6">
@@ -70,7 +65,7 @@ const RgpdPage: React.FC = () => {
 
         <section className="mb-6">
           <h2 className="text-xl font-semibold">5. Base Légale du Traitement</h2>
-          <p>Le traitement de vos données repose sur votre consentement explicite, l'exécution d'un contrat, le respect d'une obligation légale ou encore notre intérêt légitime.</p>
+          <p>Le traitement de vos données repose sur votre consentement explicite, l&apos;exécution d&apos;un contrat, le respect d&apos;une obligation légale ou encore notre intérêt légitime.</p>
         </section>
 
         <section className="mb-6">
@@ -96,7 +91,7 @@ const RgpdPage: React.FC = () => {
             <li>Opposition et limitation du traitement</li>
             <li>Portabilité des données</li>
             <li>Retrait du consentement à tout moment</li>
-            <li>Dépôt d'une plainte auprès de la CNIL (https://www.cnil.fr)</li>
+            <li>Dépôt d&apos;une plainte auprès de la CNIL (https://www.cnil.fr)</li>
           </ul>
           <p>Pour exercer ces droits, contactez-nous à [Email de contact].</p>
         </section>
@@ -113,14 +108,14 @@ const RgpdPage: React.FC = () => {
 
         <section className="mb-6">
           <h2 className="text-xl font-semibold">11. Confirmation du Consentement</h2>
-          <p>En cochant la case correspondante ou en cliquant sur "J'accepte", vous confirmez avoir pris connaissance de cette politique et acceptez l'utilisation de vos données selon les conditions précisées.</p>
+          <p>En cochant la case correspondante ou en cliquant sur &quot;J&apos;accepte&quot;, vous confirmez avoir pris connaissance de cette politique et acceptez l&apos;utilisation de vos données selon les conditions précisées.</p>
         </section>
 
         <section className="mt-8">
-          <p>En cochant la case correspondante ou en cliquant sur "J'accepte", vous confirmez avoir pris connaissance de cette politique et acceptez l'utilisation de vos données.</p>
+          <p>En cochant la case correspondante ou en cliquant sur &quot;J&apos;accepte&quot;, vous confirmez avoir pris connaissance de cette politique et acceptez l&apos;utilisation de vos données.</p>
           <div className="flex justify-center space-x-4 mt-5">
             <Button><Link href="/profile">
-              J'accepte
+              J&apos;accepte
             </Link></Button>
             
             <Button onClick={handleRefuseClick} className="bg-red-500 hover:bg-red-600">
@@ -128,7 +123,7 @@ const RgpdPage: React.FC = () => {
             </Button>
           </div>
         </section>
-      </main>
+      </div>
 
       <AlertDialog open={showAlert} onOpenChange={setShowAlert}>
         <AlertDialogContent>

@@ -7,7 +7,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <>
             {/* <ProtectedRoute> */}
                 <Header />
-                    <div className="px-8 pt-20 pb-20">{children}</div>
+                    <div className="pt-20 pb-20">{children}</div>
                 <Navbar />
             {/* </ProtectedRoute> */}
         </>
