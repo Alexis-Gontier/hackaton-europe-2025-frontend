@@ -1,8 +1,28 @@
-import React from "react";
+"use client"
+
+import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+
 const RgpdPage: React.FC = () => {
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleRefuseClick = () => {
+    setShowAlert(true);
+  };
+
   return (
     <>
       <Head>
@@ -98,11 +118,34 @@ const RgpdPage: React.FC = () => {
 
         <section className="mt-8">
           <p>En cochant la case correspondante ou en cliquant sur "J'accepte", vous confirmez avoir pris connaissance de cette politique et acceptez l'utilisation de vos données.</p>
-          <Link href="/profile" className="inline-block mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">
+          <div className="flex justify-center space-x-4 mt-5">
+            <Button><Link href="/profile">
               J'accepte
-          </Link>
+            </Link></Button>
+            
+            <Button onClick={handleRefuseClick} className="bg-red-500 hover:bg-red-600">
+              Je refuse
+            </Button>
+          </div>
         </section>
       </main>
+
+      <AlertDialog open={showAlert} onOpenChange={setShowAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+              <br />
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction className="bg-red-500 hover:bg-red-600"><a href="/profile">Continue</a></AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 };

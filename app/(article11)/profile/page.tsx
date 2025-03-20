@@ -87,6 +87,9 @@ const europeanCountries = [
   { name: "Vatican", flag: "/flags/vatican city.png" },
 ]
 
+// Trier les pays par ordre alphabétique
+europeanCountries.sort((a, b) => a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' }));
+
 export default function AccordionAccount() {
   const [showAlert, setShowAlert] = useState(false);
 
@@ -167,7 +170,6 @@ export default function AccordionAccount() {
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction>Continue</AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
