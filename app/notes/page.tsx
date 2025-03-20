@@ -2,6 +2,13 @@ export default function page() {
   return (
     <div>
       <ul>
+
+        {/* Btn de scroll */}
+        {/* skeleton */}
+        {/* card a gauche et droite */}
+
+        {/* ============================================ */}
+
         {/* Layout de connexion */}
         {/* Gestion des forms avec zod */}
         {/* SEO */}
