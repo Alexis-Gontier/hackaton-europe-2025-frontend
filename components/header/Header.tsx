@@ -10,7 +10,7 @@ export default function Header() {
     const pageName = pathname === "/" ? "Home" : pathname.split('/')[1];
 
     return (
-        <div className="p-4 flex place-content-between">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-iphone mx-auto py-6 px-8 flex place-content-between">
             <h1 className="text-3xl font-extrabold uppercase">{pageName}</h1>
             <Link
                 href="/profile"
