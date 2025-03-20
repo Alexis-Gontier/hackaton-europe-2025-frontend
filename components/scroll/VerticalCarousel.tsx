@@ -8,6 +8,7 @@ import {
     CarouselApi
 } from "@/components/ui/carousel"
 import HorizontalCarousel from "./HorizontalCarousel"
+import CardEnd from "./cards/CardEnd"
 
 export default function VerticalCarousel() {
     const [api, setApi] = React.useState<CarouselApi>()
@@ -54,6 +55,9 @@ export default function VerticalCarousel() {
                 </CarouselItem>
                 <CarouselItem>
                     <HorizontalCarousel />
+                </CarouselItem>
+                <CarouselItem>
+                    <CardEnd />
                 </CarouselItem>
             </CarouselContent>
             <div className="fixed left-3 top-1/2 transform -translate-y-1/2 py-2 text-center text-sm text-muted-foreground">
