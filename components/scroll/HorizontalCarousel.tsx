@@ -57,7 +57,7 @@ export default function HorizontalCarousel({ onSlideChange }: HorizontalCarousel
                     {Array.from({ length: count }).map((_, index) => (
                         <div
                             key={index}
-                            className={`mt-2 h-2 w-2 rounded-full ${current === index + 1 ? 'bg-blue-500' : 'bg-gray-300'}`}
+                            className={`mt-2 h-2 w-2 rounded-full duration-400 ${current === index + 1 ? 'bg-blue-500 h-3 w-3' : 'bg-gray-300'} ${index === current - 2 || index === current ? 'h-3 w-3 bg-gray-200' : ''}`}
                         />
                     ))}
                 </div>
