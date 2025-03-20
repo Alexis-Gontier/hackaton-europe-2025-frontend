@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { X, Menu } from 'lucide-react';
+import { Card } from "@/components/ui/card";
+import { X, Menu, Check } from 'lucide-react';
 
 export default function Card4() {
   const [visibleDiv, setVisibleDiv] = useState<string | null>(null);
@@ -39,7 +39,7 @@ export default function Card4() {
             </div>
             <div className="flex flex-col gap-2 justify-center items-center">
               <label htmlFor="agree" className="uppercase text-green-300 font-bold">agree</label>
-              <button id="agree" onClick={() => handleClick("agree")} className="cursor-pointer border-3 border-green-300 rounded-full p-2"><X size={48} color="lightgreen"/></button>
+              <button id="agree" onClick={() => handleClick("agree")} className="cursor-pointer border-3 border-green-300 rounded-full p-2"><Check size={48} color="lightgreen"/></button>
             </div>
           </div>
         </div>
