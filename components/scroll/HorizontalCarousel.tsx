@@ -8,10 +8,10 @@ import {
     CarouselItem,
     CarouselApi
 } from "@/components/ui/carousel"
-import CardInfoV from "./CardInfoV"
-import CardInfoA from "./CardInfoA"
 import Card1 from "./cards/Card1"
 import Card2 from "./cards/Card2"
+import Card3 from "./cards/Card3"
+import Card4 from "./cards/Card4"
 
 export default function HorizontalCarousel() {
 
@@ -42,10 +42,10 @@ export default function HorizontalCarousel() {
                 <Card2 />
             </CarouselItem>
             <CarouselItem>
-                <CardInfoV />
+                <Card3 />
             </CarouselItem>
             <CarouselItem>
-                <CardInfoA />
+                <Card4 />
             </CarouselItem>
         </CarouselContent>
         <div className="py-2 text-center text-sm text-muted-foreground">
@@ -53,7 +53,7 @@ export default function HorizontalCarousel() {
             {Array.from({ length: count }).map((_, index) => (
               <div
                 key={index}
-                className={`h-2 w-2 rounded-full ${current === index + 1 ? 'bg-blue-500' : 'bg-gray-300'}`}
+                className={`mt-2 h-2 w-2 rounded-full ${current === index + 1 ? 'bg-blue-500' : 'bg-gray-300'}`}
               />
             ))}
           </div>
