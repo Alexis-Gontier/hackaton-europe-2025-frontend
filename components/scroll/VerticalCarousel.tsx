@@ -27,6 +27,15 @@ export default function VerticalCarousel() {
         })
     }, [api])
 
+    React.useEffect(() => {
+        // Désactiver le défilement
+        document.body.style.overflow = 'hidden';
+        return () => {
+            // Réactiver le défilement
+            document.body.style.overflow = 'auto';
+        };
+    }, []);
+
     return (
         <Carousel
             setApi={setApi}
