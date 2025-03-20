@@ -175,17 +175,6 @@ export default function RegisterForm() {
           </form>
         </CardContent>
       </Card>
-      <div className="text-center text-xs text-muted-foreground">
-        <p>En cliquant sur s&apos;inscrire, vous acceptez nos termes et conditions.</p>
-        <Link href="#" className="underline underline-offset-4 hover:text-primary">
-          termes et conditions
-        </Link>{" "}
-        et notre{" "}
-        <Link href="#" className="underline underline-offset-4 hover:text-primary">
-          politique de confidentialité
-        </Link>
-        .
-      </div>
     </div>
   );
 }

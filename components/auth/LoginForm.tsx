@@ -95,17 +95,6 @@ export default function LoginForm() {
           <p>{error}</p>
         </div>
       )}
-
-      <div className="text-center text-xs text-muted-foreground">
-        En cliquant sur continuer, vous acceptez nos{" "}
-        <Link href="#" className="underline underline-offset-4 hover:text-primary">
-          Conditions d&apos;utilisation
-        </Link>{" "}
-        et notre{" "}
-        <Link href="#" className="underline underline-offset-4 hover:text-primary">
-          Politique de confidentialité
-        </Link>.
-      </div>
     </div>
   );
 }
