@@ -1,8 +1,3 @@
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card"
-
 interface RootLayoutProps {
   children: React.ReactNode;
   shadowColor?: 'blue' | 'red' | 'green';

@@ -8,8 +8,6 @@ import {
     CarouselItem,
     CarouselApi
 } from "@/components/ui/carousel"
-import CardInfo from "./CardInfo"
-import CardInfoD from "./CardInfoD"
 import CardInfoV from "./CardInfoV"
 import CardInfoA from "./CardInfoA"
 import Card1 from "./cards/Card1"
