@@ -194,7 +194,7 @@ export default function Card4({
       toast.error("Veuillez entrer un compromis avant de soumettre");
       return;
     }
-    handleVote("neutral", compromise);
+    handleVote("disagree", compromise);
   };
 
   const handleDisagreeCardClick = (reason: string) => {
