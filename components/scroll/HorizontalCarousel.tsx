@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import {
     Carousel,
     CarouselContent,
@@ -14,27 +14,22 @@ import Card4 from "./cards/Card4"
 
 interface HorizontalCarouselProps {
     onSlideChange: (index: number) => void;
+    data: {
+        id_subject: string;
+        title: string;
+        short_description: string;
+        image: string;
+        context: string;
+        impact: string[];
+        source: string;
+        votes: any;
+    };
 }
 
-export default function HorizontalCarousel({ onSlideChange }: HorizontalCarouselProps) {
-    const [api, setApi] = React.useState<CarouselApi>()
-    const [current, setCurrent] = React.useState(0)
-    const [count, setCount] = React.useState(0)
-
-    const data = {
-        id_subject: "1",
-        title: "EU Defense Spending Increase",
-        short_description: "The European Union plans a historic rise in defense spending to bolster its defense capabilities.",
-        image: "https://example.com/eu_defense_spending.jpg",
-        context: "In response to escalating geopolitical tensions and security concerns, EU leaders have agreed to significantly increase defense expenditures to enhance the EU's autonomous defense capabilities and reduce reliance on external powers.",
-        impact: [
-          "Strengthened EU defense infrastructure",
-          "Increased investment in defense technologies",
-          "Enhanced security for EU member states"
-        ],
-        source: "The Guardian",
-        votes: {}
-    };
+export default function HorizontalCarousel({ onSlideChange, data }: HorizontalCarouselProps) {
+    const [api, setApi] = useState<CarouselApi>()
+    const [current, setCurrent] = useState(0)
+    const [count, setCount] = useState(0)
 
     useEffect(() => {
         if (!api) return;
@@ -50,7 +45,7 @@ export default function HorizontalCarousel({ onSlideChange }: HorizontalCarousel
     }, [api, onSlideChange])
 
     return (
-        <Carousel setApi={setApi} className="relative w-full h-full ">
+        <Carousel setApi={setApi} className="relative w-full h-full">
             <CarouselContent className="pl-6">
                 <CarouselItem className="basis-14/16">
                     <Card1 data={data}/>
@@ -62,7 +57,7 @@ export default function HorizontalCarousel({ onSlideChange }: HorizontalCarousel
                     <Card3 data={data} />
                 </CarouselItem>
                 <CarouselItem className="basis-14/16">
-                    <Card4  />
+                    <Card4 />
                 </CarouselItem>
             </CarouselContent>
             <div className="py-2 text-center text-sm text-muted-foreground">
