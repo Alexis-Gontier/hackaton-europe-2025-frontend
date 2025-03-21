@@ -53,11 +53,11 @@ export default function HorizontalCarousel({ onSlideChange }: HorizontalCarousel
                 </CarouselItem>
             </CarouselContent>
             <div className="py-2 text-center text-sm text-muted-foreground">
-                <div className="flex justify-center space-x-2">
+                <div className="flex justify-center items-center space-x-2">
                     {Array.from({ length: count }).map((_, index) => (
                         <div
                             key={index}
-                            className={`mt-2 h-2 w-2 rounded-full duration-400 ${current === index + 1 ? 'bg-blue-500 h-3 w-3' : 'bg-gray-300'} ${index === current - 2 || index === current ? 'h-3 w-3 bg-gray-200' : ''}`}
+                            className={`mt-2 h-2 w-2 rounded-full duration-400 ${current === index + 1 ? 'bg-blue-500 h-4 w-4' : 'bg-gray-300'} ${index === current - 2 || index === current ? 'h-3 w-3 bg-gray-200' : ''}`}
                         />
                     ))}
                 </div>
