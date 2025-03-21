@@ -14,6 +14,7 @@ import Card4 from "./cards/Card4"
 
 interface HorizontalCarouselProps {
     onSlideChange: (index: number) => void;
+    onVoteComplete?: () => void; // New prop to handle vote completion
     data: {
         id_subject: string;
         title: string;
@@ -26,7 +27,7 @@ interface HorizontalCarouselProps {
     };
 }
 
-export default function HorizontalCarousel({ onSlideChange, data }: HorizontalCarouselProps) {
+export default function HorizontalCarousel({ onSlideChange, onVoteComplete, data }: HorizontalCarouselProps) {
     const [api, setApi] = useState<CarouselApi>()
     const [current, setCurrent] = useState(0)
     const [count, setCount] = useState(0)
@@ -57,7 +58,7 @@ export default function HorizontalCarousel({ onSlideChange, data }: HorizontalCa
                     <Card3 data={data} />
                 </CarouselItem>
                 <CarouselItem className="basis-14/16">
-                    <Card4 />
+                    <Card4 onVoteComplete={onVoteComplete} />
                 </CarouselItem>
             </CarouselContent>
             <div className="py-2 text-center text-sm text-muted-foreground">
