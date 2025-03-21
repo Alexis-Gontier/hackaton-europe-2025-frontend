@@ -11,7 +11,7 @@ export default function Card2() {
           {/* Dégradé overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-80" />
           {/* Contenu */}
-          <div className="relative pt-70 p-8 flex flex-col justify-center items-center text-center gap-6">
+          <div className="relative p-8 flex flex-col justify-end items-center text-center gap-6 h-full pb-20">
         <h2 className="text-4xl text-white font-extrabold after:content-[''] after:mt-4 after:block after:w-[75%] after:mx-auto after:h-1 after:bg-gradient-to-b after:from-[#007AFF] after:to-[#00A6FF] after:blur-[2px] after:shadow-[0_0_10px_5px_rgba(0,122,255,0.5)] drop-shadow-lg">
           EU Defense Spending Increase
         </h2>
