@@ -34,7 +34,7 @@ export default function VerticalCarousel() {
       votes: [],
     },
     {
-      id_subject: "",
+      id_subject: "2",
       title: "Example Title",
       short_description: "Example short description",
       image: "[Insert relevant image]",
@@ -47,7 +47,7 @@ export default function VerticalCarousel() {
       votes: [],
     },
     {
-      id_subject: "",
+      id_subject: "3",
       title: "Example Title",
       short_description: "Example short description",
       image: "[Insert relevant image]",
@@ -60,7 +60,7 @@ export default function VerticalCarousel() {
       votes: [],
     },
     {
-      id_subject: "",
+      id_subject: "4",
       title: "Example Title",
       short_description: "Example short description",
       image: "[Insert relevant image]",
