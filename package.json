@@ -20,6 +20,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.5.2",
+    "firebase": "^11.5.0",
     "localforage": "^1.10.0",
     "lucide-react": "^0.482.0",
     "marked": "^15.0.7",
