@@ -20,6 +20,21 @@ export default function VerticalCarousel() {
   const data = [
     {
       id_subject: "1",
+      title: "EU Artificial Intelligence Act Implementation",
+      short_description:
+        "The European Union is set to implement the world's first comprehensive AI legislation, the Artificial Intelligence Act, aiming to regulate AI technologies based on their associated risks.",
+      image: "[Insert relevant image]",  // Add the relevant image URL here
+      context:
+        "The European Union has introduced the Artificial Intelligence Act to oversee the development and application of AI technologies. The legislation categorizes AI systems into four risk levels—minimal, limited, high, and unacceptable—with corresponding regulatory requirements. Officially published on July 12, 2024, the Act will enter into force on August 1, 2024, with full application by August 2, 2026. Some provisions, such as those banning certain AI practices, will apply earlier, starting February 2, 2025.",
+      impact: [
+        "Regulatory sandboxes to support AI innovation",
+        "Strict penalties for non-compliance, up to €35 million or 7% of global turnover",
+      ],
+      source: "CECE - Committee for European Construction Equipment",
+      votes: {},
+    },
+    {
+      id_subject: "2",
       title: "Augmentation des dépenses de défense de l'UE",
       short_description:
         "L'Union européenne prévoit une augmentation historique des dépenses de défense pour renforcer ses capacités.",
@@ -34,23 +49,8 @@ export default function VerticalCarousel() {
       source: "The Guardian",
       votes: {},
     },
-    {
-      id_subject: "2",
-      title: "BBBB",
-      short_description:
-        "L'Union européenne prévoit une augmentation historique des dépenses de défense pour renforcer ses capacités.",
-      image: "https://example.com/eu_defense_spending.jpg",
-      context:
-        "En réponse à l'escalade des tensions géopolitiques et des préoccupations sécuritaires, les dirigeants de l'UE ont convenu d'augmenter significativement les dépenses de défense afin d'améliorer les capacités de défense autonomes de l'UE et de réduire la dépendance aux puissances extérieures.",
-      impact: [
-        "Renforcement des infrastructures de défense de l'UE",
-        "Augmentation des investissements dans les technologies de défense",
-        "Amélioration de la sécurité pour les États membres de l'UE",
-      ],
-      source: "The Guardian",
-      votes: {},
-    }
   ];
+
 
   useEffect(() => {
     if (!api) return;
