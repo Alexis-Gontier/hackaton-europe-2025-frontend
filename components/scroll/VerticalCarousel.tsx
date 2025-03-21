@@ -34,19 +34,42 @@ export default function VerticalCarousel() {
       votes: [],
     },
     {
-      id_subject: "2",
-      title: "Augmentation des dépenses de défense de l'UE",
-      short_description:
-        "L'Union européenne prévoit une augmentation historique des dépenses de défense pour renforcer ses capacités.",
-      image: "https://example.com/eu_defense_spending.jpg",
-      context:
-        "En réponse à l'escalade des tensions géopolitiques et des préoccupations sécuritaires, les dirigeants de l'UE ont convenu d'augmenter significativement les dépenses de défense afin d'améliorer les capacités de défense autonomes de l'UE et de réduire la dépendance aux puissances extérieures.",
+      id_subject: "",
+      title: "Example Title",
+      short_description: "Example short description",
+      image: "[Insert relevant image]",
+      context: "Example context",
       impact: [
-        "Renforcement des infrastructures de défense de l'UE",
-        "Augmentation des investissements dans les technologies de défense",
-        "Amélioration de la sécurité pour les États membres de l'UE",
+        "Example impact 1",
+        "Example impact 2",
       ],
-      source: "The Guardian",
+      source: "Example source",
+      votes: [],
+    },
+    {
+      id_subject: "",
+      title: "Example Title",
+      short_description: "Example short description",
+      image: "[Insert relevant image]",
+      context: "Example context",
+      impact: [
+        "Example impact 1",
+        "Example impact 2",
+      ],
+      source: "Example source",
+      votes: [],
+    },
+    {
+      id_subject: "",
+      title: "Example Title",
+      short_description: "Example short description",
+      image: "[Insert relevant image]",
+      context: "Example context",
+      impact: [
+        "Example impact 1",
+        "Example impact 2",
+      ],
+      source: "Example source",
       votes: [],
     },
   ];
