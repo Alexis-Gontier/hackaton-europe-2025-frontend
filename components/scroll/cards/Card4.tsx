@@ -1,4 +1,3 @@
-// In Card4.tsx, modify to accept and use the onVoteComplete prop
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { X, Menu, Check, NotebookPen } from 'lucide-react';
@@ -11,26 +10,21 @@ interface Card4Props {
 export default function Card4({ onVoteComplete }: Card4Props) {
   const [visibleDiv, setVisibleDiv] = useState<string | null>(null);
   const [gradient, setGradient] = useState<string>("from-[#33FF00] to-[#FF1500]");
-  const [vote, setVote] = useState<string>("");
 
   const handleClick = (type: string) => {
     setVisibleDiv(type);
     switch (type) {
       case "desagree":
-        setVote("desagree");
         setGradient("from-[#C30003] to-[#FF1500]");
         break;
       case "neutral":
-        setVote("neutral");
         setGradient("from-[#FF85ED] to-[#FF00D0]");
         break;
       case "agree":
-        setVote("agree");
         setGradient("from-[#00FF00] to-[#7FFF7F]");
         handleVote();  // Appel de la fonction pour gérer le vote
         break;
       default:
-        setVote("");
         setGradient("from-[#33FF00] to-[#FF1500]");
     }
   };
@@ -56,7 +50,7 @@ export default function Card4({ onVoteComplete }: Card4Props) {
       {visibleDiv === null && (
         <div className="w-full h-full rounded-3xl bg-white p-6 flex flex-col justify-between items-center gap-10">
           <h2 className="mt-25 text-3xl font-bold text-center">
-              Augmentation des dépenses de défense de l'UE
+              Augmentation des dépenses de défense de l&apos;UE
           </h2>
           <h3 className="text-5xl font-extrabold after:content-[''] after:mt-3 after:block after:w-full after:h-1 after:bg-gradient-to-l after:from-[#33FF00] after:to-[#FF1500] after:blur-[2px]">
             Vote
@@ -82,7 +76,7 @@ export default function Card4({ onVoteComplete }: Card4Props) {
         <div className="w-full h-full rounded-3xl bg-white p-6 flex flex-col justify-center items-center text-center gap-5">
           <h2 className="text-4xl font-extrabold after:content-[''] after:mt-3 after:block after:w-full after:h-1 after:bg-gradient-to-b after:from-[#FF00FF] after:to-[#FF00FF] after:blur-[2px]">COMPROMIS</h2>
 
-          <p className="font-semibold text-base">Formez vos propres compromis. Les compromis impliquent une solution sur laquelle chaque côté politique peut s'entendre. Ce ne sera pas parfait, mais ce sera le meilleur pour la majorité.</p>
+          <p className="font-semibold text-base">Formez vos propres compromis. Les compromis impliquent une solution sur laquelle chaque côté politique peut s&apos;entendre. Ce ne sera pas parfait, mais ce sera le meilleur pour la majorité.</p>
 
           <form onSubmit={handleNeutralSubmit} className="w-full flex flex-col gap-4">
             <textarea
@@ -103,10 +97,10 @@ export default function Card4({ onVoteComplete }: Card4Props) {
            <h4 className="my-3">Je suis en désaccord parce que...</h4>
            <div className="flex flex-col gap-4">
             <DesagreeCard onClick={handleVote}>Restreint les droits et libertés</DesagreeCard>
-            <DesagreeCard onClick={handleVote}>Nuire à l'économie et aux opportunités</DesagreeCard>
-            <DesagreeCard onClick={handleVote}>Endommage l'environnement</DesagreeCard>
-            <DesagreeCard onClick={handleVote}>Ignore l'intérêt public</DesagreeCard>
-            <DesagreeCard onClick={handleVote}>Je n'ai pas confiance dans les décideurs</DesagreeCard>
+            <DesagreeCard onClick={handleVote}>Nuire à l&apos;économie et aux opportunités</DesagreeCard>
+            <DesagreeCard onClick={handleVote}>Endommage l&apos;environnement</DesagreeCard>
+            <DesagreeCard onClick={handleVote}>Ignore l&apos;intérêt public</DesagreeCard>
+            <DesagreeCard onClick={handleVote}>Je n&apos;ai pas confiance dans les décideurs</DesagreeCard>
            </div>
 
            <div className="w-full">

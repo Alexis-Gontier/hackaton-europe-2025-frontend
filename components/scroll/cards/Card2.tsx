@@ -10,7 +10,7 @@ interface Card2Props {
     context: string;
     impact: string[];
     source: string;
-    votes: any;
+    votes: { id: string; count: number }[];
   };
 }
 
