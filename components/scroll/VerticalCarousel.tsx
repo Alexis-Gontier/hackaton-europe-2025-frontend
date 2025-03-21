@@ -23,7 +23,7 @@ export default function VerticalCarousel() {
       title: "EU Artificial Intelligence Act Implementation",
       short_description:
         "The European Union is set to implement the world's first comprehensive AI legislation, the Artificial Intelligence Act, aiming to regulate AI technologies based on their associated risks.",
-      image: "[Insert relevant image]",  // Add the relevant image URL here
+      image: "[Insert relevant image]",
       context:
         "The European Union has introduced the Artificial Intelligence Act to oversee the development and application of AI technologies. The legislation categorizes AI systems into four risk levels—minimal, limited, high, and unacceptable—with corresponding regulatory requirements. Officially published on July 12, 2024, the Act will enter into force on August 1, 2024, with full application by August 2, 2026. Some provisions, such as those banning certain AI practices, will apply earlier, starting February 2, 2025.",
       impact: [
@@ -31,7 +31,7 @@ export default function VerticalCarousel() {
         "Strict penalties for non-compliance, up to €35 million or 7% of global turnover",
       ],
       source: "CECE - Committee for European Construction Equipment",
-      votes: {},
+      votes: [],
     },
     {
       id_subject: "2",
@@ -47,10 +47,9 @@ export default function VerticalCarousel() {
         "Amélioration de la sécurité pour les États membres de l'UE",
       ],
       source: "The Guardian",
-      votes: {},
+      votes: [],
     },
   ];
-
 
   useEffect(() => {
     if (!api) return;
@@ -75,8 +74,8 @@ export default function VerticalCarousel() {
   };
 
   const handleVoteComplete = (id: string) => {
-    setVotedItems(prev => ({...prev, [id]: true}));
-    
+    setVotedItems((prev) => ({ ...prev, [id]: true }));
+
     // Move to the next vertical carousel item if available
     if (api && current < count) {
       api.scrollNext();
@@ -94,13 +93,15 @@ export default function VerticalCarousel() {
     >
       <CarouselContent className="h-screen">
         {data.map((item) => (
-          <CarouselItem key={item.id_subject} className={votedItems[item.id_subject] ? "hidden" : ""}>
-            <HorizontalCarousel
-              onSlideChange={handleHorizontalChange}
-              onVoteComplete={() => handleVoteComplete(item.id_subject)}
-              data={item}
-            />
-          </CarouselItem>
+          !votedItems[item.id_subject] && (
+            <CarouselItem key={item.id_subject}>
+              <HorizontalCarousel
+                onSlideChange={handleHorizontalChange}
+                onVoteComplete={() => handleVoteComplete(item.id_subject)}
+                data={item}
+              />
+            </CarouselItem>
+          )
         ))}
         <CarouselItem>
           <Carousel className="relative w-full h-full">
@@ -112,6 +113,7 @@ export default function VerticalCarousel() {
           </Carousel>
         </CarouselItem>
       </CarouselContent>
+
       <div
         className={`fixed left-2 top-1/2 transform -translate-y-1/2 py-2 text-center text-sm text-muted-foreground transition-opacity duration-300 ${
           horizontalCurrent > 1 ? "opacity-0" : "opacity-100"
@@ -125,8 +127,6 @@ export default function VerticalCarousel() {
                 current === index + 1
                   ? "bg-blue-500 h-9 w-3 shadow-2xl shadow-blue-500"
                   : "h-[10px] w-[10px] bg-gray-300"
-              } ${
-                index === current - 2 || index === current ? "h-3 w-3 bg-gray-200" : ""
               }`}
             />
           ))}

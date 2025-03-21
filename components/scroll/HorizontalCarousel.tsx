@@ -23,7 +23,7 @@ interface HorizontalCarouselProps {
         context: string;
         impact: string[];
         source: string;
-        votes: any;
+        votes: { id: string; count: number }[];
     };
 }
 
