@@ -151,7 +151,7 @@ export default function Card4({
       }));
       
       // Show success message
-      toast.success("Votre vote a été enregistré avec succès");
+      toast.success("Your vote has been successfully recorded.");
       
       // Show the confirmation screen based on vote type
       setVisibleDiv(voteType);
