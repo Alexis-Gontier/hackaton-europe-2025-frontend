@@ -355,7 +355,7 @@ export default function Card4({
       {visibleDiv === "disagree" && (
         <div className="w-full h-full rounded-3xl bg-white p-6 flex flex-col justify-start items-center text-center gap-3">
            <div className="border-3 border-red-500 rounded-full p-2"><X size={48} color="red"/></div>
-           <h4 className="my-3">Je suis en désaccord parce que...</h4>
+           <h4 className="my-3">I disagree because...</h4>
            <div className="flex flex-col gap-4">
             <DisagreeCard onClick={() => handleDisagreeCardClick("Restricts rights and freedom")} disabled={isSubmitting}>
             Restricts rights and freedom
